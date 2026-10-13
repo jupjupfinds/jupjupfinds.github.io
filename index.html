@@ -1,1 +1,22 @@
-<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=insta/"><title>줍줍</title><a href="insta/">줍줍 링크모음</a>
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>줍줍</title>
+<noscript><meta http-equiv="refresh" content="0; url=insta/"></noscript>
+</head><body>
+<p><a href="insta/">줍줍 링크모음</a></p>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var code = q.get('code'), err = q.get('error_reason') || q.get('error');
+  if (code || err) {
+    // 인스타그램 로그인 결과(일회용 코드)를 이 컴퓨터 안의 로컬 프로그램(127.0.0.1)으로만 넘긴다.
+    var to = 'http://127.0.0.1:8766/ig-callback?state=' + encodeURIComponent(q.get('state') || '');
+    to += code ? '&code=' + encodeURIComponent(code) : '&error=' + encodeURIComponent(err);
+    location.replace(to);
+  } else {
+    location.replace('insta/');
+  }
+})();
+</script>
+</body></html>
